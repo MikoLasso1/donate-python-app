@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	
+	<title>
+		Masjid Administrations - {% block title %}{% endblock %} 
+	</title>
+
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="/static/assets/img/logo1.png" type="image/x-icon"/>
+	<!-- Fonts and icons -->
+	<script src="/static/assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], 
+			urls: ['/static/assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/assets/css/atlantis.min.css">
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="/static/assets/css/demo.css">
+
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}
+        <style>
+            .login-back {
+                min-height: 100%;
+                min-width: 1024px;
+                width: 100%;
+                height: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        </style>
+    {% endblock stylesheets %}
+
+</head>
+<body style="background-image: url('/static/assets/img/loginback.png');">
+
+	<div class="wrapper {% block layout %}{% endblock layout %}">
+
+		<div class="">
+
+			<div class="content">
+
+				{% block content %}{% endblock content %}
+			
+			</div>
+
+			{% include 'includes/footer1.html' %}
+
+		</div>
+
+	</div>
+
+	<!-- Specific JS goes HERE -->
+    {% block javascripts %}{% endblock javascripts %}
+	
+</body>
+</html>

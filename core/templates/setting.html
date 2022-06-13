@@ -1,0 +1,216 @@
+{% extends "layouts/base.html" %}
+{% block title %} Dashboard {% endblock title %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/profile.css">
+<style>
+  .alert .close {
+    background: rgb(255 255 255 / 0%);
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    top: 0px!important;
+    color: black;
+    border-radius: 50%;
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="container-fluid pb-5">
+      <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+          <h2 class="page-title">Profile</h2>
+        </div>
+      </div>
+    </div>
+    <div class="page-inner mt--5">
+      <div class="row mt--2">
+      </div>
+      <div class="row row-card-no-pd">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row pt-2 pb-2">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="card p-4" id="update-profile">
+                          {% if msg %}
+                          <div class="alert alert-warning alert-dismissible fade show" style="background-color: #ffeced;border: none;box-shadow: none;" role="alert">
+                            Error! {{msg}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          {% endif %}
+                          {% if msg1 %}
+                          <div class="alert alert-warning alert-dismissible fade show" style="background-color: #daf1f7;border: none;box-shadow: none;" role="alert">
+                            {{msg1}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          {% endif %}                  
+                            <input type="hidden" id="succescase" value="{{msg1}}">
+                            <!-- {% if request.user.profile_pic %}
+                            <div class="text-center pb-2">
+                                <img class="profile-m" src="{{request.user.profile_pic.url}}" alt="profile">
+                            </div>
+                            {% else %}
+                            <div class="text-center pb-2">
+                              <img class="profile-m" src="/static/assets/img/black1.png" alt="profile">
+                            </div>
+                            {% endif %} -->
+                            <form action="" method="POST" enctype="multipart/form-data" id="signup-form">
+                              {% csrf_token %}
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Masjid Name</label>
+                                      {{form1.masjid_name}}
+                                      <!-- <input type="text" name="name" class="form-control" placeholder="John doe" required> -->
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Email</label>
+                                      {{form1.email}}
+                                      <!-- <input type="email" class="form-control" name="email" placeholder="jhondoe@gmail.com" required> -->
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Phone Number</label>
+                                      <!-- <input type="tel" class="form-control getphone" name="phone_number" id="phone_number" value="{{phone}}" required/> -->
+                                      {{form1.phone}}
+                                      <span class="tel-error" style="color: #dc3545;display: none;">Please enter only numbers</span>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Trust Account Name</label>
+                                      <!-- <input type="text" name="account_name"  class="form-control" placeholder="Asaan Account" required> -->
+                                      {{form1.masjidCardName}}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  {% if user.profile_pic %}
+                                  <div class="col-md-6">
+                                    <div class="form-group" style="margin-top: 21px;">
+                                      <label for="">Trust Account Number</label>
+                                      <!-- <input type="number" class="form-control" name="account_number" required placeholder="0000 0000 0000 0000"/> -->
+                                      {{form1.masjidCardNumber}}
+                                    </div>
+                                  </div>
+                                  {% else %}
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Trust Account Number</label>
+                                      <!-- <input type="number" class="form-control" name="account_number" required placeholder="0000 0000 0000 0000"/> -->
+                                      {{form1.masjidCardNumber}}
+                                    </div>
+                                  </div>
+                                  {% endif %}
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Profile Picture</label>
+                                      <!-- <input type="file" class="form-control filetype"> -->
+                                      {{form1.profile_pic}}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Current Password</label>
+                                      <!-- <input type="password" class="form-control" name="current_password" class="password" required placeholder="current password"/> -->
+                                      {{form1.Current_password}}
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">New Password</label>
+                                      <!-- <input type="password" class="form-control" name="new_password" class="password" required placeholder="new password"/> -->
+                                      {{form1.New_password}}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Confirm Password</label>
+                                      <!-- <input type="password" class="form-control" name="confirm_password" class="password" required placeholder="confirm password"/> -->
+                                      {{form1.Confirm_password}}
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for=""></label>
+                                      <input type="submit" class="form-control submitbtn" value="SAVE"/>
+                                    </div>
+                                  </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+{% endblock content %}
+
+{% block javascripts %}
+
+<!-- <script src="/static/assets/js/demo.js"></script> -->
+<script>
+  $.ajax({
+      url: "http://ip-api.com/json",
+      jsonpCallback: "callback",
+      dataType: "jsonp",
+      success: function( response ) {
+          var phone_number = window.intlTelInput(document.querySelector("#id_phone"), {
+              separateDialCode: true,
+              preferredCountries: [response.countryCode],
+              hiddenInput: "full",
+              utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+
+          });
+          var countrycode = phone_number.s["dialCode"];
+          $('#id_phone').on('change paste keyup', function(){
+              var inputnum = $(this).val();
+              // console.log(inputnum)  
+              // var onlynumbers = /^[0-9]+$/; 
+              var onlynumbers = /^[\d\\+ ]+$/;
+              if(inputnum.match(onlynumbers)){
+                $(".tel-error").hide();
+              }else{
+                $(".tel-error").show();
+                return false;
+              }
+              
+          });
+          // console.log($('#phone_number').val());
+          // console.log(phone_number.s["dialCode"]);
+          $("#signup-form").submit(function(){
+            var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+            $("input[name='phone'").val(full_number);
+          });
+      }
+  });
+  $(document).ready(function(){
+    var succescase = $("#succescase").val();
+    if (succescase == "Profile updated successfully."){
+      setTimeout(function(){ 
+        var origin   = window.location.origin;
+        window.location.replace(origin);
+      }, 2000);
+    }
+  });
+</script>
+
+{% endblock javascripts %}

@@ -1,0 +1,172 @@
+{% extends "layouts/base.html" %}
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/index.css">
+<style>
+.page-inner {
+  padding-top: 0px!important;
+}
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="container-fluid pb-5">
+      <div class="row mb-2">
+        <div class="col-md-12" style="text-align: center;">
+          <h2 class="page-title">Dashboard</h2>
+        </div>
+      </div>
+    </div>
+    <div class="page-inner mt--5" id="index-page">
+      <div class="row mt--2">
+        <div class="col-md-6 mt-2">
+          <form action="" class="form-inline mb-2">
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+              </div>
+              <div class="col-md-6 mt-2">
+                <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+              </div>
+              <!-- <div class="col-md-2"></div> -->
+            </div>
+          </form>
+          <div class="card p-3">
+            <div class="card-body text-center">
+              <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-2">
+          <form action="" class="form-inline mb-2">
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+              </div>
+              <div class="col-md-6 mt-2">
+                <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+              </div>
+              <!-- <div class="col-md-2"></div> -->
+            </div>
+          </form>
+          <div class="card p-3">
+            <div class="card-body text-center">
+              <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mt-2">
+          <div class="card p-5">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-a p-5 text-center">
+                  <img class="in-icon-img" src="/static/assets/img/donation-icon.png" alt="">
+                </div>
+              </div>
+              <div class="col-md-8 ">
+                <div class="ml-2 pt-4">
+                  <h3 class="h3">Previous Week Donations</h3>
+                  <p class="p mb-2">Week Ending - 14 Feb, 2021</p>
+                  <h2 class="do-amount">3307k</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-2">
+          <div class="card p-5">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-a p-5 text-center">
+                  <img class="in-icon-img" src="/static/assets/img/campaign-icon.png" alt="">
+                </div>
+              </div>
+              <div class="col-md-8 ">
+                <div class="ml-2 pt-4">
+                  <h3 class="h3">Previous Week Campaign Collection</h3>
+                  <p class="p mb-2">November, 2020</p>
+                  <h2 class="do-amount">5387k</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+
+  <!-- <script src="/static/assets/js/demo.js"></script> -->
+  <script>
+    var now = new Date()
+    // console.log('Today: ' + now.toUTCString())
+    var last30days = new Date(now.setDate(now.getDate() - 30))
+    // console.log('Last 30th day: ' + last30days.toUTCString())
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous"></script>
+  <script>
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title:{
+        text: "Masjid Donations"
+      },
+      data: [{        
+        type: "line",
+            indexLabelFontSize: 16,
+        dataPoints: [
+          { y: 50 },
+          { y: 414},
+          { y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
+          { y: 360 },
+          { y: 450 },
+          { y: 500 },
+          { y: 480 },
+          { y: 480 },
+          { y: 210 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+          { y: 100 },
+          { y: 180 },
+          { y: 510 }
+        ]
+      }]
+    });
+    var chart1 = new CanvasJS.Chart("chartContainer1", {
+      animationEnabled: true,
+      theme: "light2",
+      title:{
+        text: "Campaigns Donations"
+      },
+      data: [{        
+        type: "line",
+            indexLabelFontSize: 16,
+        dataPoints: [
+          { y: 50 },
+          { y: 414},
+          { y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
+          { y: 360 },
+          { y: 450 },
+          { y: 500 },
+          { y: 480 },
+          { y: 480 },
+          { y: 210 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+          { y: 100 },
+          { y: 180 },
+          { y: 510 }
+        ]
+      }]
+    });
+    chart1.render();
+    chart.render();
+    
+  }
+  </script>
+
+        
+{% endblock javascripts %}

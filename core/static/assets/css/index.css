@@ -1,0 +1,98 @@
+.card .card-header, .card-light .card-header {
+    padding: 1rem 1.25rem;
+    background-color: transparent;
+    border-bottom: none!important;
+}
+.row-card-no-pd{
+  padding: 15px 0px!important;
+}
+.card-title{
+  color: #000!important;
+  font-size: 1.25rem!important;
+  font-weight: 500!important;
+  padding-left: 20px!important;
+}
+@media only screen and (max-width: 768px) {
+  .card-title{
+    padding-left: 5px!important;
+  }
+}
+@media only screen and (max-width: 1367px) {
+  .form-control{
+    min-width: 100%!important;
+  }
+}
+.form-control{
+  padding: 0.2rem 0.2rem!important;
+  width: 100%!important;
+}
+table.dataTable.no-footer {
+  border-bottom: 1px solid #1110!important;
+}
+table.dataTable{
+  margin-top: 0px!important;
+}
+
+a.canvasjs-chart-credit {
+  display: none!important;
+}
+.card .card-body, .card-light .card-body {
+  padding: 0.25rem!important;
+}
+.content-box .title {
+  font-size: 26px!important;
+  color: #01a499!important;
+  font-weight: 600!important;
+  margin-top: 20px!important;
+  line-height: 12px!important;
+}
+.card-a {
+  background-color: #15A0D7;
+  border-radius: 8px;
+  position: relative;
+  height: 150px;
+}
+.verti{
+  vertical-align: middle;
+}
+.msg-card-body{
+  padding: 20px!important;
+}
+.content-box{
+  padding: 5px 0px!important;
+}
+.form-inline{
+  display: block;
+}
+.label{
+  font-size: 13px;
+  color: black;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.h3{
+  color: #000!important;
+  font-weight: 600;
+}
+.p{
+  font-size: 14px;
+  line-height: 1.82;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #3b3a3a;
+}
+.do-amount{
+  color: #E81919;
+  font-weight: 600;
+  font-size: 23px;
+}
+.in-icon-img{
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}

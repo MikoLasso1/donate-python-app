@@ -1,0 +1,480 @@
+{% extends "layouts/base-superA.html" %}
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/index.css">
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="container-fluid" id="admin-home" >
+  <div class="row" >
+    <div class="col-md-12" >
+      <div class="page-inner mt--5 mt-5" id="index-page">
+        <div class="row mt--2" id="charts-a">
+          <div class="col mt-2" id="col-1">
+            <form action="" class="form-inline mb-2">
+              <div class="row">
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+                </div>
+              </div>
+            </form>
+            <div class="card p-3">
+              <div class="card-body text-center">
+                <div id="chartContainer" class="charts-c" style="height: 370px; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <form action="" class="form-inline mb-2">
+              <div class="row">
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+                </div>
+              </div>
+            </form>
+            <div class="card p-3">
+              <div class="card-body text-center">
+                <div id="chartContainer1" class="charts-c1" style="height: 370px; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <form action="" class="form-inline mb-2">
+              <div class="row">
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+                </div>
+              </div>
+            </form>
+            <div class="card p-3">
+              <div class="card-body text-center">
+                <div id="chartContainer2" class="charts-c2" style="height: 370px; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <form action="" class="form-inline mb-2">
+              <div class="row">
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+                </div>
+              </div>
+            </form>
+            <div class="card p-3">
+              <div class="card-body text-center">
+                <div id="chartContainer3" class="charts-c3" style="height: 370px; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <form action="" class="form-inline mb-2">
+              <div class="row">
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                </div>
+                <div class="col-md-6 mt-2">
+                  <span><span class="label mr-1">Date To</span><input type="date" class="form-control" name="dateto_m" id="dateto_m"></span>
+                </div>
+              </div>
+            </form>
+            <div class="card p-3">
+              <div class="card-body text-center">
+                <div id="chartContainer4" class="charts-c4" style="height: 370px; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row dash-cards">
+          <div class="col mt-2">
+            <div class="card p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card-a p-3 text-center">
+                    <img class="in-icon-img1" src="/static/assets/img/users-s.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <div class="ml-2 pt-2">
+                    <h3 class="h3">Current month sign ups</h3>
+                    <p class="p mb-2">Feb 20, 2021</p>
+                    <h2 class="do-amount">5000</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="card p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card-a p-3 text-center">
+                    <img class="in-icon-img1" src="/static/assets/img/donation-s.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <div class="ml-2 pt-2">
+                    <h3 class="h3">Current month sign ups</h3>
+                    <p class="p mb-2">Feb 20, 2021</p>
+                    <h2 class="do-amount">5000</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="card p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card-a p-3 text-center">
+                    <img class="in-icon-img1" src="/static/assets/img/makedonation-s.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <div class="ml-2 pt-2">
+                    <h3 class="h3">Current month sign ups</h3>
+                    <p class="p mb-2">Feb 20, 2021</p>
+                    <h2 class="do-amount">5000</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="card p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card-a p-3 text-center">
+                    <img class="in-icon-img1" src="/static/assets/img/campaign-s.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <div class="ml-2 pt-2">
+                    <h3 class="h3">Current month sign ups</h3>
+                    <p class="p mb-2">Feb 20, 2021</p>
+                    <h2 class="do-amount">5000</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="card p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card-a p-3 text-center">
+                    <img class="in-icon-img1" src="/static/assets/img/masjid-s.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <div class="ml-2 pt-2">
+                    <h3 class="h3">Current month sign ups</h3>
+                    <p class="p mb-2">Feb 20, 2021</p>
+                    <h2 class="do-amount">5000</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col mt-2">
+            <div class="card p-5">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card-a p-5 text-center">
+                    <img class="in-icon-img" src="/static/assets/img/campaign-icon.png" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <div class="ml-2 pt-4">
+                    <h3 class="h3">Previous Week Campaign Collection</h3>
+                    <p class="p mb-2">November, 2020</p>
+                    <h2 class="do-amount">5387k</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+
+  <!-- <script src="/static/assets/js/demo.js"></script> -->
+  <script>
+    var now = new Date()
+    // console.log('Today: ' + now.toUTCString())
+    var last30days = new Date(now.setDate(now.getDate() - 30))
+    // console.log('Last 30th day: ' + last30days.toUTCString())
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous"></script>
+  <script>
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+      axisX: {
+        interval:1,
+        labelMaxWidth: 180,           
+        labelAngle: -45, //90,
+        labelFontSize: 13
+        // labelFontFamily:"verdana0"
+      },
+      animationEnabled: true,
+      exportEnabled: true,
+      // theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "Number of Users",
+        fontSize:16
+      },
+      axisY: {
+        lineThickness: 0,
+        gridThickness: 0,
+        tickLength: 0,
+        labelFontSize: 13
+      },
+      data: [{        
+        type: "column",
+        indexLabelFontSize: 12,
+        showInLegend: true,
+        dataPoints: [
+          { y: 10, label: "2012" },
+          { y: 46,  label: "2013" },
+          { y: 23,  label: "2014" },
+          { y: 56,  label: "2015" },
+          { y: 86,  label: "2016" },
+          // { y: 33, label: "2017" },
+          // { y: 23,  label: "2018" },
+          // { y: 54,  label: "2019" },
+          // { y: 23, label: "2020" },
+          // { y: 55,  label: "2021" },
+          // { y: 24,  label: "2022" },
+          // { y: 43,  label: "2023" },
+          // { y: 84,  label: "2024" },
+          { y: 23, label: "2025" },
+          { y: 42,  label: "2026" },
+          { y: 12,  label: "2027" },
+          { y: 18, label: "2028" },
+          { y: 25,  label: "2029" },
+          { y: 12,  label: "2030" }
+        ]
+      }]
+    });
+    var chart1 = new CanvasJS.Chart("chartContainer1", {
+      axisX: {
+        interval:1,
+        labelMaxWidth: 180,           
+        labelAngle: -45, //90,
+        labelFontSize: 13
+        // labelFontFamily:"verdana0"
+      },
+      animationEnabled: true,
+      exportEnabled: true,
+      // theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "Masjid Donations",
+        fontSize:16
+      },
+      axisY: {
+        lineThickness: 0,
+        gridThickness: 0,
+        tickLength: 0,
+        labelFontSize: 13
+      },
+      data: [{        
+        type: "column",  
+        indexLabelFontSize: 12,
+        showInLegend: true,
+        dataPoints: [      
+        { y: 10, label: "2012" },
+          { y: 46,  label: "2013" },
+          { y: 23,  label: "2014" },
+          { y: 56,  label: "2015" },
+          { y: 86,  label: "2016" },
+          // { y: 33, label: "2017" },
+          // { y: 23,  label: "2018" },
+          // { y: 54,  label: "2019" },
+          // { y: 23, label: "2020" },
+          // { y: 55,  label: "2021" },
+          // { y: 24,  label: "2022" },
+          // { y: 43,  label: "2023" },
+          // { y: 84,  label: "2024" },
+          { y: 23, label: "2025" },
+          { y: 42,  label: "2026" },
+          { y: 12,  label: "2027" },
+          { y: 18, label: "2028" },
+          { y: 25,  label: "2029" },
+          { y: 12,  label: "2030" }
+        ]
+      }]
+    });
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+      axisX: {
+        interval:1,
+        labelMaxWidth: 180,           
+        labelAngle: -45, //90,
+        labelFontSize: 13
+        // labelFontFamily:"verdana0"
+      },
+      animationEnabled: true,
+      exportEnabled: true,
+      // theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "Campaign Donations",
+        fontSize:16
+      },
+      axisY: {
+        lineThickness: 0,
+        gridThickness: 0,
+        tickLength: 0,
+        labelFontSize: 13
+      },
+      data: [{        
+        type: "column",  
+        indexLabelFontSize: 12,
+        showInLegend: true,
+        dataPoints: [      
+          { y: 10, label: "2012" },
+          { y: 46,  label: "2013" },
+          { y: 23,  label: "2014" },
+          { y: 56,  label: "2015" },
+          { y: 86,  label: "2016" },
+          // { y: 33, label: "2017" },
+          // { y: 23,  label: "2018" },
+          // { y: 54,  label: "2019" },
+          // { y: 23, label: "2020" },
+          // { y: 55,  label: "2021" },
+          // { y: 24,  label: "2022" },
+          // { y: 43,  label: "2023" },
+          // { y: 84,  label: "2024" },
+          { y: 23, label: "2025" },
+          { y: 42,  label: "2026" },
+          { y: 12,  label: "2027" },
+          { y: 18, label: "2028" },
+          { y: 25,  label: "2029" },
+          { y: 12,  label: "2030" }
+        ]
+      }]
+    });
+    var chart3 = new CanvasJS.Chart("chartContainer3", {
+      axisX: {
+        interval:1,
+        labelMaxWidth: 180,           
+        labelAngle: -45, //90,
+        labelFontSize: 13
+        // labelFontFamily:"verdana0"
+      },
+      animationEnabled: true,
+      exportEnabled: true,
+      // theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "Number of Campaigns",
+        fontSize:16
+      },
+      axisY: {
+        lineThickness: 0,
+        gridThickness: 0,
+        tickLength: 0,
+        labelFontSize: 13
+      },
+      data: [{        
+        type: "spline",  
+        indexLabelFontSize: 12,
+        showInLegend: true,
+        dataPoints: [      
+          { y: 10, label: "2012" },
+          { y: 46,  label: "2013" },
+          { y: 23,  label: "2014" },
+          { y: 56,  label: "2015" },
+          { y: 86,  label: "2016" },
+          // { y: 33, label: "2017" },
+          // { y: 23,  label: "2018" },
+          // { y: 54,  label: "2019" },
+          // { y: 23, label: "2020" },
+          // { y: 55,  label: "2021" },
+          // { y: 24,  label: "2022" },
+          // { y: 43,  label: "2023" },
+          // { y: 84,  label: "2024" },
+          { y: 23, label: "2025" },
+          { y: 42,  label: "2026" },
+          { y: 12,  label: "2027" },
+          { y: 18, label: "2028" },
+          { y: 25,  label: "2029" },
+          { y: 12,  label: "2030" }
+        ]
+      }]
+    });
+    var chart4 = new CanvasJS.Chart("chartContainer4", {
+      axisX: {
+        interval:1,
+        labelMaxWidth: 180,           
+        labelAngle: -45, //90,
+        labelFontSize: 13
+        // labelFontFamily:"verdana0"
+      },
+      animationEnabled: true,
+      exportEnabled: true,
+      // theme: "light1", // "light1", "light2", "dark1", "dark2"
+      title:{
+        text: "Number of Masjids",
+        fontSize:16
+      },
+      axisY: {
+        lineThickness: 0,
+        gridThickness: 0,
+        tickLength: 0,
+        labelFontSize: 13,
+      },
+      data: [{        
+        type: "spline",  
+        indexLabelFontSize: 12,
+        showInLegend: true,
+        dataPoints: [      
+          { y: 10, label: "2012" },
+          { y: 46,  label: "2013" },
+          { y: 23,  label: "2014" },
+          { y: 56,  label: "2015" },
+          { y: 86,  label: "2016" },
+          // { y: 33, label: "2017" },
+          // { y: 23,  label: "2018" },
+          // { y: 54,  label: "2019" },
+          // { y: 23, label: "2020" },
+          // { y: 55,  label: "2021" },
+          // { y: 24,  label: "2022" },
+          // { y: 43,  label: "2023" },
+          // { y: 84,  label: "2024" },
+          { y: 23, label: "2025" },
+          { y: 42,  label: "2026" },
+          { y: 12,  label: "2027" },
+          { y: 18, label: "2028" },
+          { y: 25,  label: "2029" },
+          { y: 12,  label: "2030" }
+        ]
+      }]
+    });
+    chart4.render();
+    chart3.render();
+    chart2.render();
+    chart1.render();
+    chart.render();
+    
+  }
+  </script>
+
+        
+{% endblock javascripts %}

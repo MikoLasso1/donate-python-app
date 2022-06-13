@@ -1,0 +1,146 @@
+{% extends "layouts/base-superA.html" %} {% block title %} Dashboard {% endblock title %} {% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/profile.css">
+{% endblock stylesheets %} {% block content %}
+
+<div class="container">
+    <div class="container-fluid pb-5">
+        <div class="row mt-5">
+            <div class="col-md-12" style="text-align: center;">
+                <h2 class="page-title">Edit Profile</h2>
+            </div>
+        </div>
+    </div>
+    <div class="page-inner mt--5">
+        <div class="row row-card-no-pd">
+            <div class="col-md-12">
+                <div class="card p-5">
+                    {% if msg %}
+                    <div class="alert alert-danger text-center" style="background-color: #ffeced;border: none;box-shadow: none;">{{msg}}</div>                    
+                    {% endif %} 
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                {% if request.user.profile_pic %}
+                                    <img class="prof-image" src="{{request.user.profile_pic.url}}" alt="profile">
+                                {% else %}
+                                    <img class="prof-image" src="/static/assets/img/prof1.png" alt="">
+                                {% endif %}
+                                <div>
+                                    <div class="form-group mt-1">
+                                        <label for="" class="p-label">Change Profile Picture</label>
+                                        <input type="file" class="form-control filetype">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">First Name</label>
+                                        <input type="text" name="fname" class="form-control" placeholder="jhon" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">Last Name</label>
+                                        <input type="text" name="lname" class="form-control" placeholder="doe" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="email" class="form-control" name="email" placeholder="jhondoe@gmail.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">Phone Number</label>
+                                        <input type="tel" class="form-control getphone" name="phone_number" id="phone_number" required/>
+                                        <span class="tel-error" style="color: #dc3545;display: none;">Please enter only numbers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">Address</label>
+                                        <input type="text" class="form-control" name="address"  placeholder="21 Kelvin road North East Valley" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">Current Password</label>
+                                        <input type="password" class="form-control" name="current_password" class="password" required placeholder="current password"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">New Password</label>
+                                        <input type="password" class="form-control" name="new_password" class="password" required placeholder="new password"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="">Confirm Password</label>
+                                        <input type="password" class="form-control" name="confirm_password" class="password" required placeholder="confirm password"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-3">
+                                        <input type="submit" class="form-control submitbtn" value="SAVE CHANGES"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</div>
+{% endblock content %} {% block javascripts %}
+<script>
+    $.ajax({
+        url: "http://ip-api.com/json",
+        jsonpCallback: "callback",
+        dataType: "jsonp",
+        success: function( response ) {
+            var phone_number = window.intlTelInput(document.querySelector("#phone_number"), {
+                separateDialCode: true,
+                preferredCountries: [response.countryCode],
+                hiddenInput: "full",
+                utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+  
+            });
+            $('#phone_number').on('change paste keyup', function(){
+                var inputnum = $(this).val();
+                var onlynumbers = /^[0-9]+$/;
+                console.log(inputnum)
+                if(inputnum.match(onlynumbers) || inputnum == ""){
+                    $(".tel-error").css("display","none");
+                }else{
+                    $(".tel-error").css("display","block")
+                    return false;
+                }
+                
+            });
+            $("#signup-form").submit(function(){
+                var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+                $("input[name='phone_number'").val(full_number);
+            });
+        }
+    });
+</script>
+
+{% endblock javascripts %}

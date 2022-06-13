@@ -1,0 +1,87 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Signup {% endblock %} 
+
+{% block content %}
+
+
+<div class="container" id="login-page">
+  <div class="row" id="signup-id">
+    <div class="col-md-6" >
+      <div class="col col-login1 mx-auto">
+        <div class="text-center mt-3">
+          <img class="login-side-logo" src="/static/assets/img/logo1.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="row">
+        <div class="col col-login mx-auto ">
+          <!-- <div class="text-center">
+            <img src="/static/assets/demo/brand/tabler.svg" class="h-6" alt="">
+          </div> -->
+          <form class="signup-form" action="" method="post" id="signup-form">   
+            {% csrf_token %}
+            <div class="signup-step2 mt-3" id="signup-step2">
+              <div class="card login-card">
+                <h1 class="login-title mt-5">Account Details</h1>
+                <div class="card-body pb-4">
+                  <div class="card-title text-center" style="color: #dc3545;">
+        
+                    {% if msg %}
+                      {{ msg | safe }}
+                    {% endif %}  
+                    
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="account_name" id="account_name" class="form-control" placeholder="Trusted Account Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="number" name="account_no" id="account_no" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" placeholder="Trusted Account Number" required>
+                  </div>  
+                  <div class="form-group mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-footer">
+                                <button type="submit" class="submit-login btn btn-primary btn-block">Submit</button>
+                                <a href="/" id="homeurl" style="text-decoration: none;"><button  class=" submit-login mt-2 btn btn-primary btn-block">Skip</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <!-- <div class="col-6 pt-2 text-left">
+                          <span class="back mt-3"><img class="" src="/static/assets/img/left-arrow.png" alt="">Back</span>
+                      </div> -->
+                      <!-- <div class="col-6 pt-2 text-right">
+                        <a class="decoration-none" href="/login/"><span class="login-arrow-c mt-3">Login<img class="" src="/static/assets/img/right-arrow-c.png" alt=""></span></a>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    $("#homeurl").on("click",function(){ 
+      var origin   = window.location.origin;
+      window.location.replace(origin);
+    });
+    // $(".back").on("click",function(){
+    //     $("#signup-step1").show()
+    //     $("#signup-step2").hide();
+    // });
+    // var error_msg = {{msg | safe}};
+</script>
+
+{% endblock javascripts %}

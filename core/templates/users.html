@@ -1,0 +1,172 @@
+{% extends "layouts/base-superA.html" %} {% block title %} Dashboard {% endblock title %} {% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/bil.css">
+{% endblock stylesheets %} {% block content %}
+
+<div class="container-fluid">
+    <div class="container-fluid pb-5">
+        <div class="row mt-5">
+            <div class="col-md-12" style="text-align: center;">
+                <h2 class="page-title">Users</h2>
+            </div>
+        </div>
+    </div>
+    <div class="page-inner mt--5">
+        <div class="row mt--2">
+        </div>
+        <div class="row row-card-no-pd">
+            <div class="col-md-12">
+                <div class="card card-t">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6 text-left" >
+                                <h4 class="card-title mt-4 text-left">All Users</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span><span class="label mr-1">Users</span>
+                                            <select class="form-control pb-2" name="" id="">
+                                                <option value="">Select Users</option>
+                                                <option value="all">All</option>
+                                                <option value="active_users">Active Users</option>
+                                                <option value="deactivated_users">Deactivated Users</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class=" table dt-responsive display nowrap" id="datatable">
+                                <thead style="padding-bottom: 5px;">
+                                    <tr>
+                                        <th class="text-center">First Name</th>
+                                        <th class="text-center">Last Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                        <th class="text-center">Joining Date</th>
+                                        <th class="text-center">Gender</th>
+                                        <th class="text-center">Payment Date</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">John</td>
+                                        <td class="text-center">Alex</td>
+                                        <td class="">+923224277699</td>
+                                        <td>AlexJohn_9@mail.com</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">Male</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">
+                                            <label class="switch mb-0">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/delete-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">John</td>
+                                        <td class="text-center">Alex</td>
+                                        <td class="">+923224277699</td>
+                                        <td>AlexJohn_9@mail.com</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">Male</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">
+                                            <label class="switch mb-0">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/delete-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">John</td>
+                                        <td class="text-center">Alex</td>
+                                        <td class="">+923224277699</td>
+                                        <td>AlexJohn_9@mail.com</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">Male</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">
+                                            <label class="switch mb-0">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/delete-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">John</td>
+                                        <td class="text-center">Alex</td>
+                                        <td class="">+923224277699</td>
+                                        <td>AlexJohn_9@mail.com</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">Male</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">
+                                            <label class="switch mb-0">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/delete-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">John</td>
+                                        <td class="text-center">Alex</td>
+                                        <td class="">+923224277699</td>
+                                        <td>AlexJohn_9@mail.com</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">Male</td>
+                                        <td class="text-center">19/Jan/1991</td>
+                                        <td class="text-center">
+                                            <label class="switch mb-0">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/delete-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block javascripts %}
+
+<script src="/static/assets/js/demo.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
+</script>
+
+{% endblock javascripts %}

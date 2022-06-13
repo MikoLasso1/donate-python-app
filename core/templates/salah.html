@@ -1,0 +1,154 @@
+{% extends "layouts/base.html" %}
+{% block title %} Dashboard {% endblock title %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/profile.css">
+<style>
+  .alert .close {
+    background: rgb(255 255 255 / 0%);
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    top: 0px!important;
+    color: black;
+    border-radius: 50%;
+  }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="container-fluid pb-5">
+      <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+          <h2 class="page-title">Salah Time</h2>
+        </div>
+      </div>
+    </div>
+    <div class="page-inner mt--5">
+      <div class="row mt--2">
+      </div>
+      <div class="row row-card-no-pd">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row pt-2 pb-2">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="card p-4">
+                          {% if msg %}
+                          <div class="alert alert-warning alert-dismissible fade show" style="background-color: #daf1f7;border: none;box-shadow: none;" role="alert">
+                            {{msg}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          {% endif %} 
+                            <form action="" method="POST" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Fajar Azan</label>
+                                      <input type="time" name="fajar_azan" class="form-control" value="{{salah_time.fajar_azan |time:'H:i:s'}}">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Fajar Salah</label>
+                                      <input type="time" class="form-control" name="fajar_salah" value="{{salah_time.fajar_prayer | time:'H:i:s'}}">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Dhuhr Azan</label>
+                                        <input type="time" name="dhuhr_azan" class="form-control" value="{{salah_time.Dhuhr_azan |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Dhuhr Salah</label>
+                                        <input type="time" class="form-control" name="dhuhr_salah" value="{{salah_time.Dhuhr_prayer |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Asr Azan</label>
+                                        <input type="time" name="asr_azan" class="form-control" value="{{salah_time.Asr_azan |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Asr Salah</label>
+                                        <input type="time" class="form-control" name="asr_salah" value="{{salah_time.Asr_prayer |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Maghrib Azan</label>
+                                        <input type="time" name="maghrib_azan" class="form-control" value="{{salah_time.Maghrib_azan |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Maghrib Salah</label>
+                                        <input type="time" class="form-control" name="maghrib_salah" value="{{salah_time.Maghrib_prayer |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Isha Azan</label>
+                                        <input type="time" name="isha_azan" class="form-control" value="{{salah_time.Isha_azan |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="">Isha Salah</label>
+                                        <input type="time" class="form-control" name="isha_salah" value="{{salah_time.Isha_prayer |time:'H:i:s'}}">
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Jummah Azan</label>
+                                      <input type="time" name="jumma_azan" class="form-control" value="{{salah_time.jummah_azan |time:'H:i:s'}}">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="">Jummah Salah</label>
+                                      <input type="time" class="form-control" name="jumma_salah" value="{{salah_time.jummah_prayer |time:'H:i:s'}}">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for=""></label>
+                                            <input type="submit" class="form-control submitbtn" value="SAVE"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+
+{% endblock javascripts %}

@@ -1,0 +1,402 @@
+{% extends "layouts/base.html" %}
+{% block title %} Dashboard {% endblock title %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/profile.css">
+<link rel="stylesheet" href="/static/assets/css/style1.css">
+<style>
+    .form-check, .form-group {
+        margin-bottom: 0;
+        padding: 10px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    .alert .close {
+        background: rgb(255 255 255 / 0%);
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        top: 0px!important;
+        color: black;
+        border-radius: 50%;
+    }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="container-fluid pb-5">
+      <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+          <h2 class="page-title">Add Campaign</h2>
+        </div>
+      </div>
+    </div>
+    <div class="page-inner mt--5">
+      <div class="row mt--2 ml-1">
+          <img class="mr-1 tool-icon" src="/static/assets/img/tool-icon.png" alt=""><span class="tool-text">Please allow up to 5 days for approval</span>
+      </div>
+      <div class="row row-card-no-pd mt-1">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row pt-2 pb-2">
+                    <div class="col-md-12">
+                        <div class="card pt-4 pb-4">
+                            <span id="alert"></span>
+                            <span id="alert1"></span>
+                            <div id="loading" class="text-center" style="display: none;" ><img style="height: 30px;width: 30px; text-align: center;" src="/static/assets/img/loading.gif" alt=""></div>
+                            <form action="" method="post" enctype="multipart/form-data" id="compaign-form" >
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Campaign Title</label>
+                                            <input type="text" name="title" id="title" class="form-control" placeholder="Campaign title" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Target Amount ($)</label>
+                                            <input type="text" name="target_amount" id="target_amount" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" class="form-control" placeholder="$4546" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Raised Amount ($)</label>
+                                            <input type="text" name="raised_amount" id="raised_amount" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" class="form-control" placeholder="$4546" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Start Date </label>
+                                            <input type="date" name="start_date" id="start_date" class="form-control" placeholder="March 3, 2021" required >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">End Date </label>
+                                            <input type="date" name="end_date" id="end_date" class="form-control" placeholder="March 3, 2021" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Campaign Description</label>
+                                            <textarea type="text" name="campaign_detail" id="campaign_detail" class="form-control" rows="6" placeholder="Add some description here...." required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group mb-0 pb-0">
+                                            <label for="" class="mb-0 pb-0">Photos</label>
+                                        </div>
+                                        <div class="row mt-3">
+                                           <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <img class="up-img" >
+                                                    <div class="all-t">
+                                                        <label for="add-image">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image" type="file" accept="image/*" name="image">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-image">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image" type="file" accept="image/*" name="image">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                            <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <img class="up-img" >
+                                                    <div class="all-t">
+                                                        <label for="add-image1">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image1" type="file" accept="image/*" name="image1">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-image1">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image1" type="file" accept="image/*" name="image1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <img class="up-img" >
+                                                    <div class="all-t">
+                                                        <label for="add-image2">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image2" type="file" accept="image/*" name="image2">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-image2">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image2" type="file" accept="image/*" name="image2">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
+                                            <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <img class="up-img" >
+                                                    <div class="all-t">
+                                                        <label for="add-image3">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image3" type="file" accept="image/*" name="image3">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-image3">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image3" type="file" accept="image/*" name="image3">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="col-md-4 pt-2">
+                                                 <div class="add-image-c add-image-c1">
+                                                    <img class="up-img" >
+                                                    <div class="all-t">
+                                                        <label for="add-image4">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image4" type="file" accept="image/*" name="image4">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-image4">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image4" type="file" accept="image/*" name="image4">
+                                                        </label>
+                                                    </div>
+                                                 </div>
+                                             </div>
+                                             <div class="col-md-4 pt-2">
+                                                 <div class="add-image-c add-image-c1">
+                                                    <img class="up-img" >
+                                                    <div class="all-t">
+                                                        <label for="add-image5">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image5" type="file" accept="image/*" name="image5">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-image5">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-image5" type="file" accept="image/*" name="image5">
+                                                        </label>
+                                                    </div>
+                                                 </div>
+                                             </div>
+                                        </div> -->
+                                        <div class="form-group mb-0 pb-0 mt-2">
+                                            <label for="" class="mb-0 pb-0">Videos</label>
+                                        </div>
+                                        <div class="row mt-3">
+                                           <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <video class="up-img">
+                                                        <source  src="" type="video/mp4">
+                                                    </video>
+                                                    <div class="all-t">
+                                                        <label for="add-video">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video" type="file" accept="video/mp4" name="video">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-video">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video" type="file" accept="video/mp4" name="video">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                            <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <video class="up-img">
+                                                        <source  src="" type="video/mp4">
+                                                    </video>
+                                                    <div class="all-t">
+                                                        <label for="add-video1">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video1" type="file" accept="video/mp4" name="video1">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-video1">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video1" type="file" accept="video/mp4" name="video1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <video class="up-img">
+                                                        <source  src="" type="video/mp4">
+                                                    </video>
+                                                    <div class="all-t">
+                                                        <label for="add-video2">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video2" type="file" accept="video/mp4" name="video2">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-video2">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video2" type="file" accept="video/mp4" name="video2">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
+                                            <div class="col-md-4 pt-2">
+                                                <div class="add-image-c add-image-c1">
+                                                    <video class="up-img">
+                                                        <source  src="" type="video/mp4">
+                                                    </video>
+                                                    <div class="all-t">
+                                                        <label for="add-video3">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video3" type="file" accept="video/mp4" name="video3">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-video3">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video3" type="file" accept="video/mp4" name="video3">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="col-md-4 pt-2">
+                                                 <div class="add-image-c add-image-c1">
+                                                    <video class="up-img">
+                                                        <source  src="" type="video/mp4">
+                                                    </video>
+                                                    <div class="all-t">
+                                                        <label for="add-video4">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video4" type="file" accept="video/mp4" name="video4">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-video4">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video4" type="file" accept="video/mp4" name="video4">
+                                                        </label>
+                                                    </div>
+                                                 </div>
+                                             </div>
+                                             <div class="col-md-4 pt-2">
+                                                 <div class="add-image-c add-image-c1">
+                                                    <video class="up-img">
+                                                        <source  src="" type="video/mp4">
+                                                    </video>
+                                                    <div class="all-t">
+                                                        <label for="add-video5">
+                                                            <img class="plus-icon" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video5" type="file" accept="video/mp4" name="video5">
+                                                        </label>
+                                                    </div>
+                                                    <div class="all-t1" style="display: none;">
+                                                        <label for="add-video5">
+                                                            <img class="plus-icon1" src="/static/assets/img/plus-icon.png" alt="">
+                                                            <input class="fusk" id="add-video5" type="file" accept="video/mp4" name="video5">
+                                                        </label>
+                                                    </div>
+                                                 </div>
+                                             </div>
+                                        </div> -->
+                                        <div class="row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for=""></label>
+                                                    <input type="submit" class="form-control submitbtn" value="SUBMIT"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+    $('.add-image-c1 input').change(function(event){
+        if (this.files && this.files[0]) {
+            var fileV = this.files;
+            // console.log(this.files[0].name)
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                selectedImage = e.target.result;
+                $(event.target).closest('.add-image-c1').find(".all-t1").show();
+                $(event.target).closest('.add-image-c1').find(".all-t").hide();
+                $(event.target).closest('.add-image-c1').find(".up-img").show();
+                $(event.target).closest('.add-image-c1').find('.up-img').attr('src', selectedImage);
+                // $(event.target).closest('.add-image-c1').find('.cImage').val(fileV[0].name);
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
+
+</script>
+<script>
+    $("form#compaign-form").submit(function(e) {
+        e.preventDefault();
+        $("#alert1").hide();
+        var formData = new FormData(this);
+        var title = $("#title").val();
+        var target_amount = $("#target_amount").val();
+        var raised_amount = $("#raised_amount").val();
+        var start_date = $("#start_date").val();
+        var end_date = $("#end_date").val();
+        var campaign_detail = $("#campaign_detail").val();
+        formData.append('title', title);
+        formData.append('target_amount', target_amount);
+        formData.append('raised_amount', raised_amount);
+        formData.append('start_date', start_date);
+        formData.append('end_date', end_date);
+        formData.append('campaign_detail', campaign_detail);
+        $.ajax({
+            url: '/addCampaign/',
+            type:'POST',
+            data:formData,
+            beforeSend: function() {
+                $("#loading").show();
+            },
+            success: function (data) {
+                $("#loading").hide();
+                if(data.msg1 != null){
+                    $("#alert1").show();
+                    $("#alert1").append('<div class="alert alert-warning alert-dismissible fade show" style="background-color: #ffeced;border: none;box-shadow: none;" role="alert">'+data.msg1+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+                }else{
+                    $("#alert").append('<div class="alert alert-warning alert-dismissible fade show" style="background-color: #daf1f7;border: none;box-shadow: none;" role="alert">'+data.msg+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+                    setTimeout(function(){
+                        location.replace("/campaign/");
+                    }, 2000);
+                }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+</script>
+
+
+{% endblock javascripts %}
+<!-- <div class="alert alert-warning alert-dismissible fade show" style="background-color: #ffeced;border: none;box-shadow: none;" role="alert">
+    Error! Target amount must be less or equal to raised amount.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div> -->

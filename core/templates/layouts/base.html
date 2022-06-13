@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	
+	<title>
+		Masjid Administrations {% block title %}{% endblock %} | 
+	</title>
+
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="/static/assets/img/logo1.png" type="image/x-icon"/>
+	<!-- Fonts and icons -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/static/assets/js/plugin/webfont/webfont.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
+	
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], 
+			urls: ['/static/assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/assets/css/atlantis.min.css">
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<!-- <link rel="stylesheet" href="/static/assets/css/demo.css"> -->
+
+    <!-- Specific CSS goes HERE -->
+	{% block stylesheets %}
+	<style>
+		.logo-header {
+			background-color:#16222a!important;
+		}
+		/* .custom-template .custom-toggle{
+			display: none!important;
+		} */
+		@media only screen and (max-width: 786px) {
+			.main-header{
+				position: fixed!important;
+				overflow: auto!important;
+			}
+		}
+	</style>
+	{% endblock stylesheets %}
+
+</head>
+<body style="overflow-x: hidden;">
+
+	<div class="wrapper {% block layout %}{% endblock layout %}">
+
+		{% include 'includes/navigation.html' %}
+
+		{% include 'includes/sidenav.html' %}
+
+		<div class="main-panel">
+
+			<div class="content">
+
+				{% block content %}{% endblock content %}
+			
+			</div>
+
+			{% include 'includes/footer.html' %}
+
+		</div>
+		
+		<!-- {% include 'includes/aside-settings.html' %} -->
+
+	</div>
+
+	{% include 'includes/scripts.html' %}
+
+	<!-- Specific JS goes HERE -->
+    {% block javascripts %}{% endblock javascripts %}
+	
+</body>
+</html>

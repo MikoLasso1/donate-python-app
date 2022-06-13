@@ -1,0 +1,223 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Signup {% endblock %} 
+
+{% block content %}
+
+
+<div class="container" id="login-page">
+  <div class="row" id="signup-id">
+    <div class="col-md-6" >
+      <div class="col col-login1 mx-auto">
+        <div class="text-center mt-3">
+          <img class="login-side-logo" src="/static/assets/img/logo1.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="row">
+        <div class="col col-login mx-auto ">
+          <!-- <div class="text-center">
+            <img src="/static/assets/demo/brand/tabler.svg" class="h-6" alt="">
+          </div> -->
+          <form class="signup-form" action="" method="post" id="signup-form">   
+            {% csrf_token %}
+            <div id="signup-step1" >
+              <div class="card login-card pt-4">
+                <h1 class="login-title">Sign up</h1>
+                <div class="card-body pt-1">
+                  <div class="card-title text-center" style="color: #dc3545;">
+        
+                    {% if msg %}
+                      {{ msg | safe }}
+                    {% endif %}  
+                    
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="masjid_name" id="masjid_name" class="form-control" placeholder="Masjid or Center Name" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="address" id="address" class="form-control" placeholder="Address" required>
+                  </div>  
+                  <div class="form-group">
+                      <input type="tel" class="form-control getphone" name="phone_number" id="phone_number" value="" style="width: 100%;" required/>
+                      <span class="tel-error" style="color: #dc3545;display: none;">Enter numbers without country code.</span>
+                  </div>
+                  <div class="form-group">
+                      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="password" name="password1" id="password1" class="form-control" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm Password" required>
+                  </div>
+                  <div class="form-group">
+                      <div id="locationField">
+                          <input id="autocomplete" class="form-control" name="address2" placeholder="Enter your address" onFocus="geolocate()" type="text" required/>
+                      </div>
+                  </div>
+                  <div class="form-group pb-0">
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="form-footer">
+                                  <div class="submit-login btn btn-primary btn-block" id="btn-next">Next<img class="ml-1" src="/static/assets/img/right-arrow.png" alt=""></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="signup-step2" id="signup-step2" style="display: none;">
+              <div class="card login-card">
+                <h1 class="login-title mt-5">Account Details</h1>
+                <div class="card-body pb-4">
+                  <div class="form-group">
+                    <input type="text" name="account_name" id="account_name" class="form-control" placeholder="Trusted Account Name">
+                  </div>
+                  <div class="form-group">
+                    <input type="number" name="account_no" id="account_no" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="16" minlength="16" class="form-control" placeholder="Trusted Account Number">
+                  </div>  
+                  <div class="form-group mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-footer">
+                                <button type="submit" class="submit-login btn btn-primary btn-block">Sign up</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 pt-2 text-left">
+                          <span class="back mt-3"><img class="" src="/static/assets/img/left-arrow.png" alt="">Back</span>
+                      </div>
+                      <!-- <div class="col-6 pt-2 text-right">
+                        <a class="decoration-none" href="/login/"><span class="login-arrow-c mt-3">Login<img class="" src="/static/assets/img/right-arrow-c.png" alt=""></span></a>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbcRKoAUxva1_KIYbyQ0O2U4SpMIUlu2E&callback=initAutocomplete&libraries=places&v=weekly" async></script>
+<script>
+    $.ajax({
+        url: "http://ip-api.com/json",
+        jsonpCallback: "callback",
+        dataType: "jsonp",
+        success: function( response ) {
+            var phone_number = window.intlTelInput(document.querySelector("#phone_number"), {
+                separateDialCode: true,
+                preferredCountries: [response.countryCode],
+                hiddenInput: "full",
+                utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+
+            });
+            $('#phone_number').on('change paste keyup', function(){
+                var inputnum = $(this).val();
+                var onlynumbers = /^[0-9]+$/;
+                if(inputnum.match(onlynumbers)){
+                    $(".tel-error").css("display","none");
+                }else{
+                    $(".tel-error").css("display","block")
+                    return false;
+                }
+                
+            });
+            $("#signup-form").submit(function(){
+                var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+                $("input[name='phone_number'").val(full_number);
+            });
+        }
+    });
+</script>
+<script>
+    let placeSearch;
+    let autocomplete;
+    const componentForm = {
+        street_number: "short_name",
+        route: "long_name",
+        locality: "long_name",
+        administrative_area_level_1: "short_name",
+        country: "long_name",
+        postal_code: "short_name",
+    };
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search predictions to
+  // geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("autocomplete"),
+    { types: ["geocode"] }
+  );
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(["address_component"]);
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  const place = autocomplete.getPlace();
+
+  for (const component in componentForm) {
+    document.getElementById(component).value = "";
+    document.getElementById(component).disabled = false;
+  }
+
+  // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+  for (const component of place.address_components) {
+    const addressType = component.types[0];
+
+    if (componentForm[addressType]) {
+      const val = component[componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      const circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy,
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+</script>
+<script>
+    $("#btn-next").on("click",function(){
+        $("#signup-step1").hide()
+        $("#signup-step2").show();
+    });
+    $(".back").on("click",function(){
+        $("#signup-step1").show()
+        $("#signup-step2").hide();
+    });
+    // var error_msg = {{msg | safe}};
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,127 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %} 
+
+{% block content %}
+
+<style>
+@media only screen and (min-width:1300px){
+  body{
+      overflow: hidden!important;
+  }
+}
+</style>
+<div class="container" id="login-page">
+  <div class="row" id="login-page_id">
+    <div class="col-md-6">
+      <div class="col col-login1">
+        <div class="text-center">
+          <img class="login-side-logo" src="/static/assets/img/logo1.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col col-login mx-auto">
+          <!-- <div class="text-center">
+            <img src="/static/assets/demo/brand/tabler.svg" class="h-6" alt="">
+          </div> -->
+          <div class="card login-card log-page-mar">
+            <h1 class="login-title mt-5">Login</h1>
+                <div class="card-body pb-0">
+                    <form class="" action="" method="post">
+    
+                    {% csrf_token %}
+                    <div class="card-title text-center" style="color: #dc3545;">
+        
+                    {% if msg %}
+                        {{ msg | safe }}
+                    {% endif %}  
+                    
+                    </div>
+        
+                    <div class="form-group">
+                    <!-- <label class="form-label">Username</label> -->
+                    {{ form.email }}
+                    </div>      
+                    <div class="form-group">
+                    <!-- <label class="form-label">
+                        Password
+                    </label> -->
+                    {{ form.password }}
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <div class="col-12">
+                            <span class="remember-login ml-2">
+                                <div class="round">
+                                <input type="checkbox" id="checkbox"  name="remember_me"/>
+                                <label for="checkbox"></label>
+                                <span class="rem pl-1">Keep me sign in</span>
+                                </div>
+                                <label for=""> </label>
+                            </span>
+                            <a class="frgt forgot-login" href="auth-reset-pass.html"><span class="pl-2 rem">Forgot Password?</span></a>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mt-5">
+                                <div class="form-footer">
+                                    <button type="submit" name="login" class="submit-login btn btn-primary btn-block mb-0">Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="card-body pt-0">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-footer">
+                                <a class="signuplink" href={% url 'register' %} ><button  class="login-signup-btn btn btn-primary btn-block">Signup</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+  $(function() {
+    if (localStorage.chkbx && localStorage.chkbx != '') {
+        $('#checkbox').attr('checked', 'checked');
+        $('#id_email').val(localStorage.email);
+        $('#id_password').val(localStorage.pass);
+    } else {
+        $('#checkbox').removeAttr('checked');
+        $('#id_email').val('');
+        $('#id_password').val('');
+    }
+  });
+  $('input:checkbox[name=remember_me]').click(function() {
+    if ($('#checkbox').is(':checked')) {
+      // save username and password
+      localStorage.email = $('#id_email').val();
+      localStorage.pass = $('#id_password').val();
+      localStorage.chkbx = $('#checkbox').val();
+    } else {
+      localStorage.email = '';
+      localStorage.pass = '';
+      localStorage.chkbx = '';
+    }
+  });
+</script>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<!-- <script>
+  document.getElementById("checkbox").addEventListener("click")
+</script> -->
+{% endblock javascripts %}

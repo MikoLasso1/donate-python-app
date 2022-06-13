@@ -1,0 +1,196 @@
+<style>
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 5px 10px 0px rgba(100,100,100,0.2);
+    z-index: 1!important;
+    top: 40px!important;
+  }
+  .profile-menu{
+    margin-top: -10px !important;
+    margin-right: 5px !important;
+  }
+  @media only screen and (min-width:1024px){
+    nav{
+      height: 70px;
+    }
+  }
+  .navbar-light .navbar-nav .nav-link{
+    color: #fff!important;
+  }
+  .navbar-nav .nav-link:hover {
+    background: #fff!important;
+    color: #127399!important;
+    padding: 5px 8px!important;
+    border-radius: 3px;
+  }
+  .navbar-nav .nav-link.active {
+    background: #fff!important;
+    color: #127399!important;
+    padding: 5px 8px!important;
+    border-radius: 3px;
+  }
+  @media only screen and (max-width:768px){
+    .nav-s-img {
+        height: 20px;
+        width: 20px;
+    }
+    .navbar-nav .nav-link{
+        margin-bottom: 8px!important;
+    }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class="header" >
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light" >
+          <div id="m-m" class="right-s" style="display: none;">
+            <ul>
+              <li>
+                {% if request.user.profile_pic %}
+                <span  class="avatar" style="background-image: url({{request.user.profile_pic.url}})"></span>
+                {% else %}
+                <span class="avatar" style="background-image: url(/static/assets/images/avatar.png)"></span>
+                {% endif %}
+              </li>
+              <li>
+                <span class="text-default mt-5 text-white" style="font-size: 19px;font-weight: 500!important;color: #fff !important;">
+                  {{ request.user.name }}
+                </span>
+              </li>
+              <li>
+                <a class="" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="dropdown-icon fa fa-angle-down fa-lg mt-2 ml-1" style="color: #fff;"></i>
+                </a>
+                <div class="dropdown">
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow profile-menu">
+                    <a class="dropdown-item" href="">
+                      <i class="dropdown-icon fa fa-user"></i> Profile
+                    </a>
+                    <a class="dropdown-item" href={% url 'logout' %} >
+                      <i class="dropdown-icon fa fa-sign-out"></i> Sign out
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="navbar-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#navbarNavDropdown" ria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </a>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link dashboard-l" href="/">
+                  <img class="nav-s-img mr-1 dash"  src="/static/assets/img/dashboard-s.png" alt="">
+                  <img class="nav-s-img mr-1 dash1"  src="/static/assets/img/dashboard-s1.png" alt=""> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link users-l"  href="../../users.html">
+                  <img class="mr-1 nav-s-img usr"  src="/static/assets/img/users-s.png" alt="">
+                  <img class="nav-s-img mr-1 usr1"  src="/static/assets/img/users-s1.png" alt=""> Users
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link masjid-l" href="../../masjid.html">
+                  <img class="mr-1 nav-s-img mas"  src="/static/assets/img/masjid-s.png" alt="">
+                  <img class="nav-s-img mr-1 mas1"  src="/static/assets/img/masjid-s1.png" alt=""> Masjids
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link donation-l" href="/donation/">
+                  <img class="mr-1 nav-s-img don"  src="/static/assets/img/donation-s.png" alt="">
+                  <img class="nav-s-img mr-1 don1"  src="/static/assets/img/donation-s1.png" alt=""> Donations
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link campaign-l" href="/campaign/">
+                  <img class="mr-1 nav-s-img cam"  src="/static/assets/img/campaign-s.png" alt="">
+                  <img class="nav-s-img mr-1 cam1"  src="/static/assets/img/campaign-s1.png" alt=""> Campaigns
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cam-request-l" href="../../campaign-requset-a.html">
+                  <img class="mr-1 nav-s-img cam-r"  src="/static/assets/img/cam-req-s.png" alt="">
+                  <img class="nav-s-img mr-1 cam-r1"  src="/static/assets/img/cam-req-s1.png" alt=""> Campaign Extention Request
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div id="w-m" class="right-s">
+            <ul>
+              <li>
+                {% if request.user.profile_pic %}
+                <span  class="avatar" style="background-image: url({{request.user.profile_pic.url}})"></span>
+                {% else %}
+                <span class="avatar" style="background-image: url(/static/assets/images/avatar.png)"></span>
+                {% endif %}
+              </li>
+              <li>
+                <span class="text-default mt-5" style="font-size: 19px;font-weight: 500!important;color: #fff !important;">
+                  {{ request.user.name }}
+                </span>
+              </li>
+              <li>
+                <a class="" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="dropdown-icon fa fa-angle-down fa-lg mt-2 ml-1"></i>
+                </a>
+                <div class="dropdown">
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow profile-menu">
+                    <a class="dropdown-item" href="{% url 'update_profile' request.user.id %}">
+                      <i class="dropdown-icon fa fa-user"></i> Profile
+                    </a>
+                    <a class="dropdown-item" href={% url 'logout' %} >
+                      <i class="dropdown-icon fa fa-sign-out"></i> Sign out
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+  </div>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script>
+    jQuery(function($) {
+      var path = window.location.pathname.split('/'); // because the 'href' property of the DOM element is the absolute path
+      path = path[1]
+      console.log(path)
+      $('.navbar-nav .nav-item a').each(function() {
+        var $this = $(this);
+        var link = $this.attr('href').split('/');
+        // console.log(link);
+        var emplink = link[1];
+        link4 = 'users.html'
+        link5 = 'campaign'
+        link3 = 'setting.html'
+        linkhome = ''
+        linkmasjid = 'masjid.html'
+        linkmasjid_a = 'view-masjid-a.html'
+        linkdon = 'donation'
+        linkcam = 'campaign-a.html'
+        linkreq = 'campaign-requset-a.html'
+        
+          // we check comparison between current page and attribute redirection.
+        if (link3 == path) {
+          $('.navbar-nav .setting a').addClass('active');
+        } else if (link4 == path) {
+          $('.navbar-nav .nav-link.users-l').addClass('active');
+        } else if (link5 == path) {
+          $('.navbar-nav .plans a').addClass('active');
+        } else if (linkhome == path) {
+          $('.navbar-nav .nav-link.dashboard-l').addClass('active');
+        } else if (linkcam == path) {
+          $('.navbar-nav .nav-link.campaign-l').addClass('active');
+        } else if (linkmasjid == path || path == linkmasjid_a) {
+          $('.navbar-nav .nav-link.masjid-l').addClass('active');
+        }else if (linkdon == path) {
+          $('.navbar-nav .nav-link.donation-l').addClass('active');
+        }else if (linkreq == path) {
+          $('.navbar-nav .nav-link.cam-request-l').addClass('active');
+        }
+      });
+    });
+  </script>

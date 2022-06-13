@@ -1,0 +1,167 @@
+<!-- Sidebar -->
+<style>
+    .sidebar .sidebar-wrapper .sidebar-content, .sidebar[data-background-color=white] .sidebar-wrapper .sidebar-content {
+        padding-top: 0;
+        padding-bottom: 25px!important;
+    }
+</style>
+<link rel="stylesheet" href="/static/assets/css/sidenav.css">
+<div class="sidebar sidebar-style-2" style="background-color: #15A0D7!important;">
+
+    <div class="sidebar-wrapper scrollbar scrollbar-inner" style="overflow: hidden;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    {% if request.user.profile_pic %}
+                        <img src="{{request.user.profile_pic.url}}" alt="..." class="avatar-img mr-1">
+                    {% else %}
+                        <img  src="/static/assets/img/black2.png" alt="..." class="avatar-img mr-1">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row text-center mt-4">
+                <div class="col-12">
+                    <span class="semaspan pr-1">Faisal Masjid</span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-content" style="overflow-y: hidden!important;"> 
+            {% if user.is_authenticated %}
+            <ul class="nav nav-primary" id="nav1">
+                <!-- <li>
+                    <div class="search">
+                        <input type="text" name="adminSearch" id="adminSearch" placeholder="Search...." class="list-group-item list-group-item-action">
+                    </div>
+                </li> -->
+                <!-- <hr style="border: 1px solid #171b27"> -->
+                <li class="nav-item " id="organization">
+                    <a href="/">
+                        <img class="org" src="/static/assets/img/home-icon.png" alt="">
+                        <img class="org1" src="/static/assets/img/home-icon1.png" alt=""> Home
+                    </a>
+                </li>
+                <!-- <hr style="border: 1px solid #171b27"> -->
+
+
+                <li class="nav-item billing">
+                    <a href="/donation/">
+                        <img class="bil" src="/static/assets/img/donation.png" alt="">
+                        <img class="bil1" src="/static/assets/img/donation1.png" alt=""> Donations
+                    </a>
+                </li>
+                <li class="nav-item plans">
+                    <a href="/campaign/">
+                        <img class="plan" src="/static/assets/img/campaign.png" alt="">
+                        <img class="plan1" src="/static/assets/img/campaign1.png" alt=""> Campaigns
+                    </a>
+                </li>
+
+
+                <li class="nav-item approval">
+                    <a href="{% url 'salaTime' request.user.id %}">
+                        <img class="req" src="/static/assets/img/prayer.png" alt="">
+                        <img class="req1" src="/static/assets/img/prayer1.png" alt=""> Salah Time
+                    </a>
+                </li>
+
+
+                <li class="nav-item setting">
+                    <a href="{% url 'update_profile' request.user.id %}">
+                        <img class="set" src="/static/assets/img/setting.png" alt="">
+                        <img class="set1" src="/static/assets/img/setting1.png" alt=""> Profile
+                    </a>
+                </li>
+
+                <!-- <li class="nav-item setting">
+                    <a href="{% url 'update_profile' request.user.id %}">
+                        <img class="set" src="/static/assets/img/setting.png" alt="">
+                        <img class="set1" src="/static/assets/img/setting1.png" alt=""> Profile
+                    </a>
+                </li> -->
+
+
+                <!-- <hr style="border: 1px solid #171b27"> -->
+
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="logout-loc">
+                        <img class="log" src="/static/assets/img/logout.png" alt="">
+                        <img class="log1" src="/static/assets/img/logout1.png" alt=""> Logout
+                    </a>
+                </li>
+
+
+                <!-- <hr style="border: 1px solid #171b27"> -->
+            </ul>
+            {% else %}
+            <ul class="nav nav-primary">
+            </ul>
+            {% endif %} 
+        </div>
+    </div>
+</div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script>
+    jQuery(function($) {
+        var path = window.location.pathname.split('/'); // because the 'href' property of the DOM element is the absolute path
+        path = path[1]
+        // console.log(path)
+        $('#nav1 .nav-item a').each(function() {
+            var $this = $(this);
+            var link = $this.attr('href').split('/');
+            var emplink = link[1];
+            link4 = 'donation'
+            link5 = 'campaign'
+            link6 = 'add-campaign.html'
+            link3 = 'update_profile'
+            linkorg = ''
+            linkscr = 'screenshot'
+            linkgrp = 'groupNotification'
+            linkEmp = 'Employees'
+            linkreq = 'salahTime'
+                // we check comparison between current page and attribute redirection.
+            if (link3 == path) {
+                $('#nav1 .setting a').addClass('active');
+                $(this).children(".set").hide();
+                $(this).children(".set1").show();
+            } else if (link4 == path) {
+                $('#nav1 .billing a').addClass('active');
+                $(this).children(".bil").hide();
+                $(this).children(".bil1").show();
+            } else if (link5 == path || link6 == path) {
+                $('#nav1 .plans a').addClass('active');
+                $(this).children(".plan").hide();
+                $(this).children(".plan1").show();
+            } else if (linkorg == path) {
+                $('#nav1 #organization a').addClass('active');
+                $(this).children(".org").hide();
+                $(this).children(".org1").show();
+            } else if (linkEmp == path) {
+                $('#nav1 .employee a').addClass('active');
+                $(this).children(".emp").hide();
+                $(this).children(".emp1").show();
+            } else if (linkscr == path) {
+                $('#nav1 .screenshots a').addClass('active');
+                $(this).children(".scr").hide();
+                $(this).children(".scr1").show();
+            }else if (linkgrp == path) {
+                $('#nav1 .groupNotification a').addClass('active');
+                $(this).children(".grp").hide();
+                $(this).children(".grp1").show();
+            }else if (linkreq == path) {
+                $('#nav1 .approval a').addClass('active');
+                $(this).children(".req").hide();
+                $(this).children(".req1").show();
+            }
+            // }else if (link2===path){
+            // 	$this.addClass('active');
+            // 	$(this).children(".scr").hide();
+            // 	$(this).children(".scr1").show();
+            // 	$(this).children(".bil").hide();
+            // 	$(this).children(".bil1").show();
+            // }
+        });
+    });
+</script>
+
+<!-- End Sidebar -->

@@ -1,0 +1,174 @@
+{% extends "layouts/base-superA.html" %} {% block title %} Dashboard {% endblock title %} {% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/bil.css">
+{% endblock stylesheets %} {% block content %}
+
+<div class="container-fluid">
+    <div class="container-fluid pb-5">
+        <div class="row mt-5">
+            <div class="col-md-12" style="text-align: center;">
+                <h2 class="page-title">Campaigns Extension Request</h2>
+            </div>
+        </div>
+    </div>
+    <div class="page-inner mt--5">
+        <div class="row mt--2">
+        </div>
+        <div class="row row-card-no-pd">
+            <div class="col-md-12">
+                <div class="card card-t">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-7 text-left" >
+                                <h4 class="card-title mt-4 text-left">All Campaigns Extension Requests</h4>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span><span class="label mr-1">Date From</span><input type="date" class="form-control" name="datefrom_m" id="datefrom_m"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class=" table dt-responsive display nowrap" id="datatable">
+                                <thead style="padding-bottom: 5px;">
+                                    <tr>
+                                        <th class="text-center">Masjid Name</th>
+                                        <th>Masjid Address</th>
+                                        <th>Masjid Email</th>
+                                        <th>Campaign Title</th>
+                                        <th class="text-center">Extension Requested</th>
+                                        <th>Reason</th>
+                                        <th class="text-center">Accept Request</th>
+                                        <th class="text-center">Reject Request</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">Badshahi masjid</td>
+                                        <td>Walled City of Lahore, Lahore, Punjab</td>
+                                        <td>bad23@gmail.com</td>
+                                        <td>Save students masjid from closing</td>
+                                        <td class="text-center">2 days</td>
+                                        <td>bla bla bla bla</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success successbtn">Accept</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-danger dangerbtn">Reject</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/view-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Badshahi masjid</td>
+                                        <td>Walled City of Lahore, Lahore, Punjab</td>
+                                        <td>bad23@gmail.com</td>
+                                        <td>Save students masjid from closing</td>
+                                        <td class="text-center">2 days</td>
+                                        <td>bla bla bla bla</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success successbtn">Accept</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-danger dangerbtn">Reject</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/view-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Badshahi masjid</td>
+                                        <td>Walled City of Lahore, Lahore, Punjab</td>
+                                        <td>bad23@gmail.com</td>
+                                        <td>Save students masjid from closing</td>
+                                        <td class="text-center">2 days</td>
+                                        <td>bla bla bla bla</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success successbtn">Accept</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-danger dangerbtn">Reject</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/view-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Badshahi masjid</td>
+                                        <td>Walled City of Lahore, Lahore, Punjab</td>
+                                        <td>bad23@gmail.com</td>
+                                        <td>Save students masjid from closing</td>
+                                        <td class="text-center">2 days</td>
+                                        <td>bla bla bla bla</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success successbtn">Accept</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-danger dangerbtn">Reject</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/view-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Badshahi masjid</td>
+                                        <td>Walled City of Lahore, Lahore, Punjab</td>
+                                        <td>bad23@gmail.com</td>
+                                        <td>Save students masjid from closing</td>
+                                        <td class="text-center">2 days</td>
+                                        <td>bla bla bla bla</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success successbtn">Accept</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-danger dangerbtn">Reject</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/view-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">Badshahi masjid</td>
+                                        <td>Walled City of Lahore, Lahore, Punjab</td>
+                                        <td>bad23@gmail.com</td>
+                                        <td>Save students masjid from closing</td>
+                                        <td class="text-center">2 days</td>
+                                        <td>bla bla bla bla</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-success successbtn">Accept</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-danger dangerbtn">Reject</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#"><img class="view-icon" src="/static/assets/img/view-icon.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block javascripts %}
+
+<script src="/static/assets/js/demo.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
+</script>
+
+{% endblock javascripts %}

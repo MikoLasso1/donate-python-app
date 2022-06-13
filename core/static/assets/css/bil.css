@@ -1,0 +1,192 @@
+#datatable tr{
+    border-bottom: 1px solid silver;
+  }
+  td,th{
+    padding: 5px;
+  }
+  .page-title{
+    text-align: center;
+  }
+  /* div#datatable_length {
+    display: none!important;
+  }
+  div#datatable_filter {
+    display: none!important;
+  } */
+  .primary-btn{
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 0;
+    border: none;
+    color: #fff!important;
+    background-color: #15A0D7!important;
+    float: right;
+    padding: .375rem .75rem;
+  }
+  #datatable :before,#datatable :after{
+    display:none!important;
+  }
+  @media only screen and (max-width: 786px) {
+    .dataTables_wrapper{
+      padding-left: 0px!important;
+    }
+  }
+  .primary-btn1{
+    border: none;
+    color: #fff!important;
+    background-color: #15A0D7!important;
+    padding: 2px 5px!important;
+    font-size: 11px!important;
+    border-radius: 2px!important;
+  }
+  .primary-btn:hover {
+    background-color: #15A0D7!important;
+    box-shadow: 0px 3px 7px #aaa!important;
+  }
+  .primary-btn1:hover {
+    background-color: #15A0D7!important;
+    box-shadow: 0px 3px 7px #aaa!important;
+  }
+  .btn-danger1{
+    background-color: #dc3545!important;
+    color: #fff!important;
+    padding: 2px 5px!important;
+    font-size: 11px!important;
+    border-radius: 2px!important;
+    border: none!important;
+  }
+  .btn-danger1{
+    background-color:#c82333!important;
+  }
+
+  .card .card-header, .card-light .card-header {
+      padding: 1rem 1.25rem;
+      background-color: transparent;
+      border-bottom: none!important;
+  }
+  .row-card-no-pd{
+    padding: 15px 0px!important;
+  }
+  .card-title{
+    color: #000!important;
+    font-size: 1.25rem!important;
+    font-weight: 600!important;
+    padding-left: 20px!important;
+  }
+  @media only screen and (max-width: 786px) {
+    .card-title{
+      padding-left: 5px!important;
+    }
+  }
+  table.dataTable{
+    margin-top: 0px!important;
+  }
+  .card .card-body, .card-light .card-body {
+    padding: 0.25rem!important;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: linear-gradient(to bottom, #58585800 0%, #1110 100%)!important;
+    border-color: #00000000!important;
+  }
+  table.dataTable.no-footer {
+    border-bottom: 1px solid #1110!important;
+}
+.approved{
+  padding: .15rem 0.4rem!important;
+}
+.rejected{
+  padding: .15rem 0.6rem!important;
+  background-color: #E81919!important;
+  border: 1px solid #E81919!important;
+}
+.btn-click{
+  padding: .15rem 0.4rem!important;
+  background-color: #15a0d7!important;
+  border: 1px solid #15a0d7!important;
+}
+.btn-applied{
+  padding: .15rem 0.9rem!important;
+  background-color: #D3D3D3!important;
+  border: 1px solid #D3D3D3!important;
+}
+.btnsm {
+  padding: 0px 10px!important;
+}
+.warning-btn1 {
+  border: none;
+  color: #fff!important;
+  padding: 2px 5px!important;
+  font-size: 11px!important;
+  border-radius: 2px!important;
+  background-color: #f58b08!important;
+}
+.billing-detail .form-control:disabled, .form-control[readonly]{
+  color: #000!important;
+  padding: .3rem 0.5rem;
+}
+.billing-detail label{
+  font-weight: 600!important;
+  font-size: 12px!important;
+}
+.form-control:disabled, .form-control[readonly] {
+  background: #f9f6f6!important;
+  border-color: #e8e8e8!important;
+}
+.form-control[readonly]:focus {
+  border-color: #15A0D7!important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(1,164,153,.555)!important;
+  outline: 0 none!important;
+}
+.form-control:disabled, .form-control[readonly].b-d-g {
+  color: #07756e!important;
+}
+.form-control:disabled, .form-control[readonly].b-d-r {
+  color: red!important;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #15a0d7!important;
+  border-color: #15a0d7!important;
+}
+.text-center{
+  text-align: center!important;
+}
+td {
+  font-size: 13px!important;
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 24px;
+  color: rgb(24, 24, 24);
+  font-weight: 600;
+}
+.submitbtn{
+  background-color: #15A0D7!important;
+  color: white;
+  padding: .7rem 1rem!important;
+}
+.submitbtn:hover{
+  background-color: #15A0D7!important;
+  color: white;
+  box-shadow: 0px 3px 7px #aaa!important;
+}
+.form-control {
+  border-color: #15a0d7!important;
+}
+label {
+  color: #343435!important;
+  font-size: 14px!important;
+}
+.tool-icon{
+  height: 20px;
+  width: 20px;
+}
+.tool-text{
+  color: #FF9903;
+}
+.modal-header h3{
+  text-align: center!important;
+}

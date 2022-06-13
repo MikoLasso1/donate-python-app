@@ -1,0 +1,68 @@
+.tool-icon{
+  height: 20px;
+  width: 20px;
+}
+.tool-text{
+  color: #FF9903;
+}
+.add-image-c {
+  background-color: #f4f8f9;
+  padding: 10px 15px;
+  border-radius: 12px;
+  height: 190px!important;
+
+}
+body, html{
+  overflow-x: hidden;
+}
+.all-t {
+  text-align: center;
+}
+.add-image-c input{
+  display: none;
+}
+.plus-icon {
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  vertical-align: middle;
+  border-style: none;
+  cursor: pointer;
+}
+.plus-icon1 {
+  height: 20px;
+  width: 20px;
+  margin: 0;
+  position: absolute;
+  top: 7%;
+  right: 10%;
+  transform: translate(10%, 10%);
+  cursor: pointer;
+}
+@media only screen and (max-width:768px){
+  .plus-icon1 {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    transform: translate(10%, 10%);
+    cursor: pointer;
+  }
+}
+.up-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.up-img {
+  display: none;
+}
+.submitbtn:hover{
+  cursor: pointer;
+}

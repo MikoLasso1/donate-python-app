@@ -1,0 +1,593 @@
+{% extends "layouts/base-fullscreen.html" %}
+{% block title %} Signup {% endblock %} 
+
+{% block content %}
+<link href="/static/assets/css/register.css" rel="stylesheet"/>
+<style>
+  .form-control{
+    height: auto!important;
+  }
+  label {
+    color: #495057!important;
+    font-size: 14px!important;
+    margin-top: 9px!important;
+  }
+  .pac-container.pac-logo{
+    z-index: 99999 !important;
+  }
+</style>
+<div class="container" id="login-page">
+  <div class="row" id="signup-id">
+    <div class="col-md-6" >
+      <div class="col col-login1 mx-auto">
+        <div class="text-center mt-3">
+          <img class="login-side-logo" src="/static/assets/img/logo1.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="row">
+        <div class="col col-login mx-auto ">
+          <!-- <div class="text-center">
+            <img src="/static/assets/demo/brand/tabler.svg" class="h-6" alt="">
+          </div> -->
+          <form class="signup-form" action="" method="post" id="signup-form">   
+            {% csrf_token %}
+            <div id="signup-step1" >
+              <div class="card login-card pt-4">
+                <h1 class="login-title">Sign up</h1>
+                <div class="card-body pt-1">
+                  <div id="loading" class="text-center" style="display: none;" ><img style="height: 25px;width: 25px; text-align: center;" src="/static/assets/img/loading.gif" alt=""></div>
+                  <div class="card-title text-center" style="color: #dc3545;">
+                    <span id="error"></span>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="masjid_name" id="masjid_name" class="form-control" placeholder="Masjid or Center Name" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" name="address" id="address1" class="form-control" placeholder="Address" >
+                  </div>  
+                  <div class="form-group">
+                      <input type="tel" class="form-control getphone" name="phone_number" id="phone_number" value="" style="width: 100%;" required/>
+                      <span class="tel-error" style="color: #dc3545;display: none;">Please enter only numbers</span>
+                  </div>
+                  <input type="hidden" id="countrycode" name="countrycode">
+                  <div class="form-group">
+                      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="password" name="password1" id="password1" class="form-control" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm Password" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="button" class="form-control" id="pickmap" data-toggle="modal" data-target="#myModal" value="Pick Map Location">
+                  </div>
+                  <input type="hidden" name="address2" id="address2" class="form-control">
+                  <!-- <div class="form-group">
+                      <div id="locationField">
+                          <input id="autocomplete" class="form-control" name="address2" id="address2" placeholder="Enter your address" onFocus="geolocate()" type="text" required/>
+                      </div>
+                  </div> -->
+                  <div class="form-group pb-0">
+                      <div class="row">
+                          <div class="col-12">
+                              <div class="form-footer">
+                                    <button type="submit" class="submit-login btn btn-primary btn-block">Sign Up</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div> -->
+      <div class="row row-cards">
+        <div class="col-lg-8">
+          <div class="card p-0">
+            <div class="card-header">
+              <h3 class="card-title">Map Location</h3>
+            </div>
+            <div class="map_body">
+              <div class="card-body p-2" id="chart-development-activity" style="height: 25.5rem;padding: 5px;">
+                <div id="map" style="height: 100%;width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card p-0">
+            <div class="modal-header">
+              <h4 class="modal-title">Location address</h4>
+            </div>
+            <div id="card_body_4">
+              <div class="card-body p-3" id="chart-development-activity" style="height: 25.5rem">
+                    <label class="label1" for="">Search address:</label>
+                    <input id="pac_input" type="text" class="form-control" value="" name="" placeholder="Search address" autocomplete="on" required>
+                    <span id="addresse" style="float: right;color:rgb(255, 0, 0)"></span>
+                    <label class="label1" for="">City:</label>
+                    <input type="text" class="form-control" value="" id="city" name="city" required>
+                    <label class="label1" for="">address:</label>
+                    <input type="text" class="form-control" value="" id="address" name="address" required>
+                    <label class="label1" for="">Lattitude:</label>
+                    <input  type="text" class="form-control" value="" id="lat" name="lat" readonly>
+                    <label class="label1" for="">Longitude:</label>
+                    <input  type="text" class="form-control" value="" id="lng" name="lng" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpCQ45heawRoeqRHmMXsvCVkSpsiL0EnQ&libraries=places"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpCQ45heawRoeqRHmMXsvCVkSpsiL0EnQ&callback=initAutocomplete&libraries=places&v=weekly" async></script>
+
+<script>
+    $.ajax({
+        url: "http://ip-api.com/json",
+        jsonpCallback: "callback",
+        dataType: "jsonp",
+        success: function( response ) {
+            var phone_number = window.intlTelInput(document.querySelector("#phone_number"), {
+                separateDialCode: true,
+                preferredCountries: [response.countryCode],
+                hiddenInput: "full",
+                utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+
+            });
+            var countrycode = phone_number.s["dialCode"];
+            $('#phone_number').on('change paste keyup', function(){
+                var inputnum = $(this).val();
+                // var onlynumbers = /^[0-9]+$/;
+                var onlynumbers = /^[\d\\+]+$/;
+                if(inputnum.match(onlynumbers)){
+                    $(".tel-error").css("display","none");
+                }else{
+                    $(".tel-error").css("display","block")
+                    return false;
+                }
+                
+            });
+            // console.log($('#phone_number').val());
+            // console.log(phone_number.s["dialCode"]);
+            $("#signup-form").submit(function(){
+              var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+              $("input[name='phone_number'").val(full_number);
+            });
+        }
+    });
+</script>
+<script>
+    $("#pickmap").on('click', function () {
+      $('#error').hide();
+    });
+    $("#signup-form").submit(function() {
+        var phone = $("#phone_number").val();
+        var masjid_name = $("#masjid_name").val();
+        var email = $("#email").val();
+        var password1 = $("#password1").val();
+        var password2 = $("#password2").val();
+        var address1 = $("#address1").val();
+        var address2 = $("#address2").val();
+        var lat = $("#lat").val();
+        var lng = $("#lng").val();
+        if(lat == "" || lng == ""){
+          $('#error').show();
+          $('#error').text("Please select map location.");
+          return false
+        }
+        else{
+          var userdata = [masjid_name, email, phone, password1, password2, address1, lat, lng];
+          var list = userdata;
+          $.ajax({
+              url: '{% url "register" %}',
+              data: {'list[]': list},
+              dataType: 'json',
+              beforeSend: function() {
+                $("#loading").show();
+                $('#error').hide();
+              },
+              success: function (data) {
+                $("#loading").hide();
+                if (data.success == false){
+                  $('#error').show();
+                  $('#error').text(data.msg);
+                  // if(data.msg == "Phone number already exist."){
+                  //   $("#phone_number").val(null);
+                  // }
+                }else{
+                  var origin   = window.location.origin;
+                  window.location.replace(origin);
+                }
+              },
+          });
+          return false;
+        }
+    });
+</script>
+<!-- <script>
+  $(document).ready(function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  })
+  function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+  }
+</script> -->
+
+<!-- Address Picker javascript -->
+
+<!-- <script>
+    let placeSearch;
+    let pac_input;
+    const componentForm = {
+        street_number: "short_name",
+        route: "long_name",
+        locality: "long_name",
+        administrative_area_level_1: "short_name",
+        country: "long_name",
+        postal_code: "short_name",
+    };
+
+function initAutocomplete() {
+  pac_input = new google.maps.places.Autocomplete(
+    document.getElementById("pac_input"),
+    { types: ["geocode"] }
+  );
+  pac_input.setFields(["address_component"]);
+  pac_input.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+  const place = pac_input.getPlace();
+
+  for (const component in componentForm) {
+    document.getElementById(component).value = "";
+    document.getElementById(component).disabled = false;
+  }
+  for (const component of place.address_components) {
+    const addressType = component.types[0];
+
+    if (componentForm[addressType]) {
+      const val = component[componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      const circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy,
+      });
+      pac_input.setBounds(circle.getBounds());
+    });
+  }
+}
+</script> -->
+
+<!-- end address Picker javascript -->
+
+<!-- Start Address Picker With Map -->
+<script>
+  $('#lng').on('keyup', function () {
+      if($('#lng').val() || $('$lat').val()){
+          var map;
+          var InforObj = [];
+          var centerCords = {
+              lat: Number($('#lat').val()),
+              lng: Number($('#lng').val())
+          };
+
+          initMap();
+
+          var marker = new google.maps.Marker({
+              position: centerCords,
+              map: map,
+          });
+
+          function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 8,
+                  center: centerCords
+              });
+          }
+      }else{
+          
+      }
+  });
+
+  $('#lat').on('keyup', function () {
+      if($('#lng').val() || $('$lat').val()){
+          var map;
+          var InforObj = [];
+          var centerCords = {
+              lat: Number($('#lat').val() ),
+              lng: Number($('#lng').val())
+          };
+
+          initMap();
+
+          var marker = new google.maps.Marker({
+              position: centerCords,
+              map: map,
+          });
+
+          function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 8,
+                  center: centerCords,
+                  gestureHandling: 'greedy'
+              });
+          }
+      }else{
+          
+      }
+  });
+
+  
+  (function(exports) {
+      "use strict";
+
+      // This example adds a search box to a map, using the Google Place Autocomplete
+      // feature. People can enter geographical searches. The search box will return a
+      // pick list containing a mix of places and predicted search terms.
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      
+
+      function initAutocomplete() {
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 8,
+          mapTypeId: "roadmap",
+          gestureHandling: 'greedy'
+
+        }); // Create the search box and link it to the UI element.
+
+        var geocoder = new google.maps.Geocoder();
+
+        /*var options = {
+          types: ['(cities)'],
+          componentRestrictions: {country: "us"}
+        };*/
+
+        var input = document.getElementById("pac_input");
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.addListener("bounds_changed", function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+
+        var markers = []
+
+        function setMapOnAll(map) {
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+          }
+        }
+
+        function clearMarkers() {
+          setMapOnAll(null);
+        }
+
+        searchBox.addListener("places_changed", function() {
+          var places = searchBox.getPlaces();
+          console.log(places)
+          //clearMarkers();
+          if (places.length == 0) {
+            return;
+          } // Clear out the old markers.
+
+          /*markers.forEach(function(marker) {
+            marker.setMap(null);
+          });*/
+
+        
+
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+
+            /*var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };*/ // Create a marker for each place.
+
+            /*markers.push(
+              new google.maps.Marker({
+                map: map,
+                icon: icon,
+                draggable: true,
+                title: place.name,
+                position: place.geometry.location
+              })
+            );*/
+            
+            var marker = new google.maps.Marker({
+              map: map,
+              draggable: true,
+              title: place.name,
+              position: place.geometry.location,
+            })
+            clearMarkers();
+            markers.push(marker);
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            document.getElementById("lat").value = lat;
+            document.getElementById("lng").value = lng;
+            var latlng =  lat + ',' + lng;
+            var input = latlng;
+            var latlngStr = input.split(",", 2);
+            var latlng = {
+              lat: parseFloat(latlngStr[0]),
+              lng: parseFloat(latlngStr[1])
+            };
+            geocoder.geocode(
+              {
+                location: latlng
+              },
+              function(results, status) {
+                if (status === "OK") {
+                  if (results[0]) {      
+                    var address = results[0].formatted_address;    
+                    // console.log(results[0].address_components[5].long_name)
+                    console.log(results[0].address_components)                  
+                    var str = address.replace(/,[^,]+$/, "");
+                    $('#address').val(str);
+                    $('#address1').val(str);
+                    var lat = marker.getPosition().lat();
+                    var lng = marker.getPosition().lng();
+             
+                    $.ajax({
+                      url: "https://geocode.xyz/" +lat+ "," +lng+"?json=1",
+                      jsonpCallback: "callback",
+                      dataType: "jsonp",
+                      success: function(location) {
+                        var country = location.country;
+                        var city = location.city;
+                        var city = city+", "+country;
+                        $('#city').val(city);
+                      }
+                    });
+                    document.getElementById("addresse").style.display = "none";
+                  } else {
+                    window.alert("No results found");
+                  }
+                } else {
+                  window.alert("Geocoder failed due to: " + status);
+                }
+              }
+            );
+            
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+              document.getElementById("lat").value = this.getPosition().lat();
+              document.getElementById("lng").value = this.getPosition().lng();
+              var latlng =  this.getPosition().lat() + ',' + this.getPosition().lng();
+              
+              var input = latlng;
+              var latlngStr = input.split(",", 2);
+              var latlng = {
+                lat: parseFloat(latlngStr[0]),
+                lng: parseFloat(latlngStr[1])
+              };
+              geocoder.geocode(
+                {
+                  location: latlng
+                },
+                function(results, status) {
+                  if (status === "OK") {
+                    if (results[0]) {      
+                      var address = results[0].formatted_address;                  
+                      var str = address.replace(/,[^,]+$/, "");
+                      $('#address').val(str);
+                      $('#address1').val(str);
+                      var lat = marker.getPosition().lat();
+                      var lng = marker.getPosition().lng();                   
+                      $.ajax({
+                          url: "https://geocode.xyz/" +lat+ "," +lng+"?json=1",
+                          jsonpCallback: "callback",
+                          dataType: "jsonp",
+                          success: function(location) {
+                            var country = location.country;
+                            var city = location.city;
+                            var city = city+", "+country;
+                            $('#city').val(city);
+                          }
+                      });
+                     
+                    } else {
+                      window.alert("No results found");
+                    }
+                  } else {
+                    window.alert("Geocoder failed due to: " + status);
+                  }
+                }
+              );
+            });
+          });
+          map.fitBounds(bounds);
+        });
+
+        
+      }
+
+      exports.initAutocomplete = initAutocomplete;
+    })((this.window = this.window || {}));
+</script>
+<script>
+  function doGeocode() {
+    var addr = document.getElementById("address");
+    // Get geocoder instance
+    var geocoder = new google.maps.Geocoder();
+
+    // Geocode the address
+    geocoder.geocode({
+      'address': addr.value
+    }, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
+
+        // set it to the correct, formatted address if it's valid
+        addr.value = results[0].formatted_address;;
+      }
+    });
+  };
+
+</script>
+<!-- End Address Picker With Map -->
+
+{% endblock javascripts %}

@@ -1,0 +1,100 @@
+.page-title{
+    text-align: center!important;
+}
+.primary-btn{
+    font-size: 14px!important;
+    font-weight: 500;
+    border-radius: 0;
+    border: none;
+    color: #fff!important;
+    background-color: #15A0D7!important;
+    float: right;
+    padding: .375rem .75rem!important;
+}
+#datatable :before,#datatable :after{
+    display:none!important;
+}
+.profile-m{
+    height: 80px!important;
+    width: 80px!important;
+    border-radius: 50px!important;
+    object-fit: contain!important;
+}
+.form-control {
+    margin-bottom: 7px!important;
+}
+.primary-btn1{
+    border: none!important;
+    color: #fff!important;
+    background-color: #15A0D7!important;
+    padding: 2px 5px!important;
+    font-size: 11px!important;
+    border-radius: 2px!important;
+}
+.primary-btn:hover {
+    background-color: #15A0D7!important;
+}
+.primary-btn1:hover {
+    background-color: #15A0D7!important;
+}
+.btn-default {
+    background-color: #15A0D7!important;
+    color: #fff!important;
+    font-weight: 500!important;
+    padding: 7px 40px!important;
+    border-radius: 0!important;
+}
+label {
+    color: #495057!important;
+    font-size: 13px!important;
+}
+.form-control {
+    font-size: 15px;
+    border-color: #15a0d7!important;
+}
+input.form-control.filetype {
+    padding: .4rem 1rem;
+}
+#id_profile_pic{
+    padding: .4rem 1rem;
+}
+.btn-default:hover {
+    box-shadow: 3px 3px 7px #aaa!important;
+    background-color: #15A0D7!important;
+}
+.form-group label{
+    font-weight: 600!important;
+    margin-bottom: .2rem!important;
+}
+input:focus, select:focus {
+    border-color: #15A0D7!important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(1,164,153,.555)!important;
+    outline: 0 none!important;
+}
+
+.card .card-header, .card-light .card-header {
+    padding: 1rem 1.25rem!important;
+    background-color: transparent!important;
+    border-bottom: none!important;
+}
+.iti.iti--allow-dropdown.iti--separate-dial-code {
+    width: 100%;
+}
+.submitbtn{
+    background-color: #15A0D7!important;
+    color: white;
+    padding: .7rem 1rem!important;
+}
+.submitbtn:hover{
+    background-color: #15A0D7!important;
+    color: white;
+    box-shadow: 0px 3px 7px #aaa!important;
+}
+@media only screen and (max-width: 786px) {
+    .card{
+        padding: 0px!important;
+    }
+}
+.submitbtn:hover{
+    cursor: pointer;
+}
